@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:42:36 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 08:32:54 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 08:50:24 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack
 {
 	t_list	*top;
 	t_list	*bottom;
-} t_stack;
+}	t_stack;
 
 // Basic Operations
 t_stack	*initialize_stack(void);

@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:46:13 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 08:32:08 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 08:49:46 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-int		size(t_stack *stack)
+int	size(t_stack *stack)
 {
 	t_list	*current;
 	int		i;

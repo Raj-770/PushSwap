@@ -6,23 +6,14 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 06:09:05 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 07:45:42 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 08:49:28 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-void	mini_sort(t_stack *a, t_stack *b)
+static void	set_fourth_element(t_stack *a, int top, int bottom)
 {
-	int	top;
-	int	bottom;
-
-	pb(a, b);
-	pb(a, b);
-	tiny_sort(a);
-	pa(a, b);
-	top = a->top->data;
-	bottom = a->bottom->data;
 	if (top > bottom)
 		ra(&a);
 	else if (top > a->top->next->data && top < a->top->next->next->data)
@@ -34,14 +25,16 @@ void	mini_sort(t_stack *a, t_stack *b)
 		sa(&a);
 		rra(&a);
 	}
-	pa(a, b);
-	top = a->top->data;
-	bottom = a->bottom->data;
+}
+
+static void	set_fifth_element(t_stack *a, int top, int bottom)
+{
 	if (top > bottom)
 		ra(&a);
 	else if (top > a->top->next->data && top < a->top->next->next->data)
 		sa(&a);
-	else if (top > a->top->next->data && top > a->top->next->next->data && top < a->bottom->prev->data)
+	else if (top > a->top->next->data && top > a->top->next->next->data && \
+	top < a->bottom->prev->data)
 	{
 		rra(&a);
 		sa(&a);
@@ -50,7 +43,8 @@ void	mini_sort(t_stack *a, t_stack *b)
 		rra(&a);
 		sa(&a);
 	}
-	else if (top > a->top->next->data && top > a->top->next->next->data && top > a->bottom->prev->data)
+	else if (top > a->top->next->data && top > a->top->next->next->data && \
+	top > a->bottom->prev->data)
 	{
 		rra(&a);
 		sa(&a);
@@ -58,4 +52,15 @@ void	mini_sort(t_stack *a, t_stack *b)
 		rra(&a);
 		rra(&a);
 	}
+}
+
+void	mini_sort(t_stack *a, t_stack *b)
+{
+	pb(a, b);
+	pb(a, b);
+	tiny_sort(a);
+	pa(a, b);
+	set_fourth_element(a, a->top->data, a->bottom->data);
+	pa(a, b);
+	set_fifth_element(a, a->top->data, a->bottom->data);
 }
