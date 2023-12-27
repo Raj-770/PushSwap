@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   tiny_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 17:26:15 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 05:57:03 by rpambhar         ###   ########.fr       */
+/*   Created: 2023/12/27 05:39:19 by rpambhar          #+#    #+#             */
+/*   Updated: 2023/12/27 05:56:04 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#include "../../includes/pushswap.h"
 
-# include "stack.h"
-# include <limits.h>
+void	tiny_sort(t_stack *a)
+{
+	int	f;
+	int	s;
+	int	t;
 
-// Parsing
-int		has_duplicate(t_stack *stack, int num);
-int		is_number(const char *str);
-void	parse_args(int argc, char **argv, t_stack *a);
-
-// Algorithms
-void	tiny_sort(t_stack *a);
-
-#endif
+	f = a->top->data;
+	s = a->top->next->data;
+	t = a->bottom->data;
+	if (f > s && t > s && f < t)
+		sa(&a);
+	else if (f > s && s > t)
+	{
+		sa(&a);
+		rra(&a);
+	}
+	else if (f > s && t > s && f > t)
+		ra(&a);
+	else if (f < s && s > t && t > f)
+	{
+		sa(&a);
+		ra(&a);
+	}
+	else
+		rra(&a);
+}

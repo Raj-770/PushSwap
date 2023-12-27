@@ -25,7 +25,9 @@ SRCS	:=	src/pushswap.c \
 			src/operations/push.c \
 			src/operations/rotate.c \
 			src/operations/reverse_rotate.c \
-			src/parse_args.c
+			src/parse_args.c \
+			src/utils.c \
+			src/sorting_algorithms/tiny_sort.c
 
 OBJS	:=	$(SRCS:.c=.o)
 
