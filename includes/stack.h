@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:42:36 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/26 22:49:32 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 01:50:50 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../lib/ft_printf/ft_printf.h"
+# include "../lib/libft/libft.h"
 
 typedef struct s_list
 {

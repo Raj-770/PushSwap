@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 10:13:43 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/11/18 12:26:09 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 04:37:20 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,20 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int n);
 int		ft_toupper(int n);
 
-typedef struct s_list
+typedef struct s_lst
 {
 	void			*content;
-	struct s_list	*next;
-}	t_list;
+	struct s_lst	*next;
+}	t_lst;
 
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int		ft_lstsize(t_lst *lst);
+t_lst	*ft_lstnew(void *content);
+void	ft_lstadd_back(t_lst **lst, t_lst *new);
+void	ft_lstadd_front(t_lst **lst, t_lst *new);
+t_lst	*ft_lstlast(t_lst *lst);
+void	ft_lstdelone(t_lst *lst, void (*del)(void *));
+void	ft_lstclear(t_lst **lst, void (*del)(void *));
+void	ft_lstiter(t_lst *lst, void (*f)(void *));
+t_lst	*ft_lstmap(t_lst *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

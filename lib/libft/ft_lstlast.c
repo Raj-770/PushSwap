@@ -6,15 +6,15 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:08:35 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/10/14 11:34:43 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 04:36:31 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_lst *lst)
 {
-	t_list	*current;
+	t_lst	*current;
 
 	current = NULL;
 	if (!lst)

@@ -6,16 +6,16 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:00:25 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/10/15 19:47:41 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 04:36:43 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_lst	*ft_lstmap(t_lst *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*element;
-	t_list	*new;
+	t_lst	*element;
+	t_lst	*new;
 	void	*temp;
 
 	new = NULL;
