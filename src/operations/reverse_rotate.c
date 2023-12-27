@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 22:25:28 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/26 22:37:07 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 07:37:02 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@ static void	reverse_rotate(t_stack *stack)
 {
 	t_list	*last;
 	t_list	*first;
+	t_list	*temp;
 
 	if (stack->top != NULL && stack->top->next != NULL)
 	{
 		last = stack->bottom;
 		first = stack->top;
 		last->prev->next = NULL;
+		temp = last->prev;
 		last->next = first;
 		last->prev = NULL;
 		first->prev = last;
 		stack->top = last;
-		stack->bottom = last->prev;
+		stack->bottom = temp;
 	}
 }
 
@@ -46,5 +48,5 @@ void	rrr(t_stack **a, t_stack **b)
 {
 	reverse_rotate(*a);
 	reverse_rotate(*b);
-	ft_printf("rra\n");
+	ft_printf("rrr\n");
 }
