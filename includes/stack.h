@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:42:36 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 01:50:50 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 08:32:54 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_stack	*initialize_stack(void);
 void	push(t_stack *stack, int number);
 int		pop(t_stack *stack);
 void	free_stack(t_stack *stack);
+int		size(t_stack *stack);
 
 // Swap
 void	sa(t_stack **a);

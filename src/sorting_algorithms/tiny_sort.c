@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 05:39:19 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 05:56:04 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/27 07:15:33 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	tiny_sort(t_stack *a)
 		sa(&a);
 		ra(&a);
 	}
-	else
+	else if (f < s && s > t && t < f)
 		rra(&a);
 }
