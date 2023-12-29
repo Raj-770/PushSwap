@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   set_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 22:12:02 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/28 17:42:07 by rpambhar         ###   ########.fr       */
+/*   Created: 2023/12/28 11:09:31 by rpambhar          #+#    #+#             */
+/*   Updated: 2023/12/29 16:05:14 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int	main(int argc, char **argv)
+void	set_index(t_stack *stack)
 {
-	t_stack	a;
-	t_stack	b;
-	int		a_size;
+	t_list	*current_i;
+	t_list	*current_j;
 
-	if (argc >= 2)
+	current_i = stack->top;
+	while (current_i)
 	{
-		parse_args(argc, argv, &a);
-		set_index(&a);
-		a_size = size(&a);
-		if (a_size == 3)
-			tiny_sort(&a);
-		else if (a_size == 5)
-			mini_sort(&a, &b);
-		else if (a_size > 5 && a_size <= 100)
-			middle_sort(&a, &b);
+		current_j = stack->top;
+		while (current_j)
+		{
+			if (current_i->data > current_j->data)
+				current_i->index++;
+			current_j = current_j->next;
+		}
+		current_i = current_i->next;
 	}
-	return (0);
 }

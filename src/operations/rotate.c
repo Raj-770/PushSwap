@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:57:36 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/26 22:45:00 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:38:56 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,17 @@ void	rr(t_stack **a, t_stack **b)
 	rotate(*b);
 	ft_printf("rr\n");
 }
+
+// int main()
+// {
+// 	t_stack *b;
+
+// 	b = (t_stack *)malloc(sizeof(t_stack));
+// 	push(b, 1);
+// 	push(b, 2);
+// 	push(b, 5);
+// 	push(b, 3);
+// 	print_stack(b);
+// 	rb(&b);
+// 	print_stack(b);
+// }

@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:42:36 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 08:50:24 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:01:14 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ typedef struct s_stack
 }	t_stack;
 
 // Basic Operations
-t_stack	*initialize_stack(void);
 void	push(t_stack *stack, int number);
 int		pop(t_stack *stack);
-void	free_stack(t_stack *stack);
+void	print_stack(t_stack *stack);
 int		size(t_stack *stack);
+int		is_sorted(t_stack *a);
+t_list	*find_max_element(t_stack *b);
 
 // Swap
 void	sa(t_stack **a);

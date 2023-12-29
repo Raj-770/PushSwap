@@ -1,4 +1,4 @@
-NAME	:=	pushswap
+NAME	:=	push_swap
 
 # Compiler
 CC	:=	cc
@@ -27,8 +27,12 @@ SRCS	:=	src/pushswap.c \
 			src/operations/reverse_rotate.c \
 			src/parse_args.c \
 			src/utils.c \
+			src/set_index.c \
 			src/sorting_algorithms/tiny_sort.c \
-			src/sorting_algorithms/mini_sort.c
+			src/sorting_algorithms/mini_sort.c \
+			src/sorting_algorithms/middle_sort.c \
+			src/sorting_algorithms/middle_sort_utils_1.c \
+			src/sorting_algorithms/middle_sort_utils_2.c
 
 OBJS	:=	$(SRCS:.c=.o)
 
