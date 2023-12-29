@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 06:09:05 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 08:49:28 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:16:31 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,24 @@ static void	set_fifth_element(t_stack *a, int top, int bottom)
 
 void	mini_sort(t_stack *a, t_stack *b)
 {
-	pb(a, b);
-	pb(a, b);
-	tiny_sort(a);
-	pa(a, b);
-	set_fourth_element(a, a->top->data, a->bottom->data);
-	pa(a, b);
-	set_fifth_element(a, a->top->data, a->bottom->data);
+	int	size_a;
+
+	size_a = size(a);
+	if (size_a == 5)
+	{
+		pb(a, b);
+		pb(a, b);
+		tiny_sort(a);
+		pa(a, b);
+		set_fourth_element(a, a->top->data, a->bottom->data);
+		pa(a, b);
+		set_fifth_element(a, a->top->data, a->bottom->data);
+	}
+	else if (size_a == 4)
+	{
+		pb(a, b);
+		tiny_sort(a);
+		pa(a, b);
+		set_fourth_element(a, a->top->data, a->bottom->data);
+	}
 }

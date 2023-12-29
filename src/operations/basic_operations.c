@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:46:13 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/29 16:05:35 by rpambhar         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:13:25 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ int	size(t_stack *stack)
 	return (i);
 }
 
-// void	print_stack(t_stack *stack)
-// {
-// 	t_list	*current;
+void	print_stack(t_stack *stack)
+{
+	t_list	*current;
 
-// 	current = stack->top;
-// 	while (current)
-// 	{
-// 		printf("%d ", current->data);
-// 		current = current->next;
-// 	}
-// 	printf("\n");
-// }
+	current = stack->top;
+	while (current)
+	{
+		printf("%d ", current->data);
+		current = current->next;
+	}
+	printf("\n");
+}
 
 int	is_sorted(t_stack *a)
 {
