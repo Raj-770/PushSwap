@@ -27,12 +27,13 @@ SRCS	:=	src/pushswap.c \
 			src/operations/reverse_rotate.c \
 			src/parse_args.c \
 			src/utils.c \
-			src/set_index.c \
 			src/sorting_algorithms/tiny_sort.c \
 			src/sorting_algorithms/mini_sort.c \
 			src/sorting_algorithms/middle_sort.c \
 			src/sorting_algorithms/middle_sort_utils_1.c \
-			src/sorting_algorithms/middle_sort_utils_2.c
+			src/sorting_algorithms/middle_sort_utils_2.c \
+			src/sorting_algorithms/middle_sort_utils_3.c \
+			src/sorting_algorithms/middle_sort_utils_4.c
 
 OBJS	:=	$(SRCS:.c=.o)
 
@@ -54,7 +55,7 @@ $(FT_PRINTF):
 # Compiling PushSwap
 $(NAME): $(OBJS)
 	@echo "Compiling PushSwap..."
-	@$(CC) $(OBJS) $(LIBFT) $(FT_PRINTF) $(INC) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBFT) $(FT_PRINTF) $(INC) -g -o $(NAME)
 
 clean:
 	@echo "Cleaning object files..."

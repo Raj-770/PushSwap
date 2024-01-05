@@ -6,20 +6,20 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:46:13 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/29 16:13:25 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:47:12 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 
-void	push(t_stack *stack, int number)
+void	push(t_stack *stack, int number, int index)
 {
 	t_list	*new_element;
 
 	new_element = (t_list *)malloc(sizeof(t_list));
 	if (new_element == NULL)
 		exit(EXIT_FAILURE);
-	new_element->index = 0;
+	new_element->index = index;
 	new_element->data = number;
 	new_element->next = stack->top;
 	new_element->prev = NULL;
@@ -30,22 +30,22 @@ void	push(t_stack *stack, int number)
 		stack->bottom = new_element;
 }
 
-int	pop(t_stack *stack)
+t_list	pop(t_stack *stack)
 {
-	int		popped_data;
 	t_list	*temp;
+	t_list	temp2;
 
 	if (stack->top == NULL)
 		exit(EXIT_FAILURE);
-	popped_data = stack->top->data;
 	temp = stack->top;
+	temp2 = *temp;
 	stack->top = stack->top->next;
 	if (stack->top != NULL)
 		stack->top->prev = NULL;
 	if (stack->top == NULL)
 		stack->bottom = NULL;
 	free(temp);
-	return (popped_data);
+	return (temp2);
 }
 
 int	size(t_stack *stack)
@@ -63,19 +63,6 @@ int	size(t_stack *stack)
 	return (i);
 }
 
-void	print_stack(t_stack *stack)
-{
-	t_list	*current;
-
-	current = stack->top;
-	while (current)
-	{
-		printf("%d ", current->data);
-		current = current->next;
-	}
-	printf("\n");
-}
-
 int	is_sorted(t_stack *a)
 {
 	t_list	*current;
@@ -90,20 +77,21 @@ int	is_sorted(t_stack *a)
 	return (1);
 }
 
-t_list	*find_max_element(t_stack *b)
+void	set_index(t_stack *stack)
 {
-	t_list	*current;
-	t_list	*max_element;
+	t_list	*current_i;
+	t_list	*current_j;
 
-	current = b->top;
-	max_element = current;
-	while (current)
+	current_i = stack->top;
+	while (current_i)
 	{
-		if (current->data > max_element->data)
+		current_j = stack->top;
+		while (current_j)
 		{
-			max_element = current;
+			if (current_i->data > current_j->data)
+				current_i->index++;
+			current_j = current_j->next;
 		}
-		current = current->next;
+		current_i = current_i->next;
 	}
-	return (max_element);
 }

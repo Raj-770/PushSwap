@@ -6,85 +6,78 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:31:41 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/29 16:08:05 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:51:26 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-void	init(t_sort *sort)
-{
-	sort->hold_first = NULL;
-	sort->hold_second = NULL;
-	sort->size_a = 0;
-	sort->moves_h1 = 0;
-	sort->moves_h2 = 0;
-	sort->rmoves = 0;
-	sort->min = 0;
-	sort->max = 0;
-}
+static t_sort	find_cheapest_moves(t_stack *a, t_stack *b, int index);
 
-void	set_hold_first(t_stack *a, t_sort *s)
+int	get_cheapest_moves(t_stack *a, t_stack *b)
 {
+	int		min_moves;
+	int		min_index;
 	t_list	*current;
+	t_sort	info;
 
 	current = a->top;
-	s->moves_h1 = 0;
+	info = find_cheapest_moves(a, b, current->index);
+	min_moves = info.moves;
+	min_index = current->index;
+	current = current->next;
 	while (current)
 	{
-		if (current->index >= s->min && current->index < s->max)
+		info = find_cheapest_moves(a, b, current->index);
+		if (info.moves < min_moves)
 		{
-			s->hold_first = current;
-			return ;
+			min_moves = info.moves;
+			min_index = current->index;
 		}
-		s->moves_h1 = s->moves_h1 + 1;
 		current = current->next;
 	}
-	s->hold_first = NULL;
+	return (min_index);
 }
 
-void	set_hold_second(t_stack *a, t_sort *s)
+static t_sort	find_cheapest_moves(t_stack *a, t_stack *b, int index)
 {
-	t_list	*current;
+	t_sort	info;
+	int		moves;
 
-	current = a->bottom;
-	s->moves_h2 = 0;
-	while (current)
+	info.moves = check_ra_rb(a, b, index);
+	info.operation = 1;
+	moves = check_rra_rrb(a, b, index);
+	if (moves < info.moves)
 	{
-		if (current->index >= s->min && current->index < s->max)
-		{
-			s->hold_second = current;
-			return ;
-		}
-		s->moves_h2 = s->moves_h2 + 1;
-		current = current->prev;
+		info.moves = moves;
+		info.operation = 2;
 	}
-	s->hold_second = NULL;
-}
-
-void	set_range(t_sort *s)
-{
-	int	temp;
-
-	temp = s->size_a;
-	s->min = 0;
-	if (temp % 5 != 0)
-		temp = temp + temp % 5;
-	if (s->size_a <= 10)
-		s->max = 10;
-	else
+	moves = check_ra_rrb(a, b, index);
+	if (moves < info.moves)
 	{
-		s->max = temp / 5;
+		info.moves = moves;
+		info.operation = 3;
 	}
+	moves = check_rra_rb(a, b, index);
+	if (moves < info.moves)
+	{
+		info.moves = moves;
+		info.operation = 4;
+	}
+	return (info);
 }
 
-void	change_range(t_sort *s)
+void	do_cheapest_moves(t_stack *a, t_stack *b, int min_index)
 {
-	int	temp;
+	t_sort	info;
 
-	temp = s->size_a;
-	if (temp % 5 != 0)
-		temp = temp - temp % 5;
-	s->min = s->min + temp / 5;
-	s->max = s->max + temp / 5;
+	info = find_cheapest_moves(a, b, min_index);
+	if (info.operation == 1)
+		do_ra_rb(a, b, min_index);
+	if (info.operation == 2)
+		do_rra_rrb(a, b, min_index);
+	if (info.operation == 3)
+		do_ra_rrb(a, b, min_index);
+	if (info.operation == 4)
+		do_rra_rb(a, b, min_index);
 }

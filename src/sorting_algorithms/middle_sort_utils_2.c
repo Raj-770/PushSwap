@@ -6,75 +6,66 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 15:59:28 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/29 16:07:41 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:54:18 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-void	push_h1(t_stack *a, t_stack *b, t_sort *s)
+void	do_ra_rb(t_stack *a, t_stack *b, int min_index)
 {
-	int	i;
-
-	i = 0;
-	while (i < s->moves_h1)
-	{
+	while (a->top->index != min_index && get_position_in_b(b, min_index) > 0)
+		rr(&a, &b);
+	while (a->top->index != min_index)
 		ra(&a);
-		i++;
-	}
-	pb(a, b);
+	while (get_position_in_b(b, min_index) > 0)
+		rb(&b);
 }
 
-void	push_h2(t_stack	*a, t_stack *b, t_sort	*s)
+void	do_rra_rrb(t_stack *a, t_stack *b, int min_index)
 {
 	int	i;
+	int	j;
 
-	i = 0;
-	while (i < s->moves_h2)
+	j = get_position_in_b(b, min_index);
+	i = size(b);
+	while (j != 0 && a->top->index != min_index
+		&& i - get_position_in_b(b, min_index) > 0)
+	{
+		rrr(&a, &b);
+		j = get_position_in_b(b, min_index);
+	}
+	while (a->top->index != min_index)
 	{
 		rra(&a);
-		i++;
 	}
-	rra(&a);
-	pb(a, b);
-}
-
-void	push_back(t_stack *a, t_stack *b, t_sort *s)
-{
-	t_list	*max;
-
-	while (b->top)
+	while (i - get_position_in_b(b, min_index))
 	{
-		max = find_max_element(b);
-		s->rmoves = find_rmoves(b, max);
-		push_max_element(a, b, s);
+		if (get_position_in_b(b, min_index) == 0)
+			break ;
+		rrb(&b);
 	}
 }
 
-int	find_rmoves(t_stack *b, t_list *max)
-{
-	t_list	*current;
-	int		ret;
-
-	ret = 0;
-	current = b->top;
-	while (current->data != max->data)
-	{
-		ret++;
-		current = current->next;
-	}
-	return (ret);
-}
-
-void	push_max_element(t_stack *a, t_stack *b, t_sort *s)
+void	do_ra_rrb(t_stack *a, t_stack *b, int min_index)
 {
 	int	i;
 
-	i = 0;
-	while (i < s->rmoves)
+	i = size(b);
+	while (a->top->index != min_index)
+		ra(&a);
+	while (i - get_position_in_b(b, min_index) > 0)
 	{
-		rb(&b);
-		i++;
+		if (get_position_in_b(b, min_index) == 0)
+			break ;
+		rrb(&b);
 	}
-	pa(a, b);
+}
+
+void	do_rra_rb(t_stack *a, t_stack *b, int min_index)
+{
+	while (a->top->index != min_index)
+		rra(&a);
+	while (get_position_in_b(b, min_index) > 0)
+		rb(&b);
 }

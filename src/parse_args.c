@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 23:03:49 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/29 15:54:17 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:25:27 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	handel_character_inputs(char *arg, t_stack *a)
 		ft_printf("Error E");
 		exit(EXIT_FAILURE);
 	}
-	push(a, num);
+	push(a, num, 0);
 }
 
 static void	handel_string_inputs(char *arg, t_stack *a)

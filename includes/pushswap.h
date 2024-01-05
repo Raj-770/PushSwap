@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:26:15 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/29 16:04:00 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:57:45 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,8 @@
 
 typedef struct s_sort
 {
-	t_list	*hold_first;
-	t_list	*hold_second;
-	int		size_a;
-	int		change_r;
-	int		moves_h1;
-	int		moves_h2;
-	int		rmoves;
-	int		min;
-	int		max;
+	int	moves;
+	int	operation;
 }	t_sort;
 
 // Parsing
@@ -40,18 +33,22 @@ void	mini_sort(t_stack *a, t_stack *b);
 void	middle_sort(t_stack *a, t_stack *b);
 
 // Middle Sort Utils
-void	init(t_sort *sort);
-void	set_hold_first(t_stack *a, t_sort *s);
-void	set_hold_second(t_stack *a, t_sort *s);
-void	change_range(t_sort *s);
-void	set_range(t_sort *s);
-void	push_h1(t_stack *a, t_stack *b, t_sort *s);
-void	push_h2(t_stack	*a, t_stack *b, t_sort	*s);
-void	push_back(t_stack *a, t_stack *b, t_sort *s);
-int		find_rmoves(t_stack *b, t_list *max);
-void	push_max_element(t_stack *a, t_stack *b, t_sort *s);
+int		get_cheapest_moves(t_stack *a, t_stack *b);
+void	do_cheapest_moves(t_stack *a, t_stack *b, int min_index);
 
-// Set Index
-void	set_index(t_stack *stack);
+void	do_ra_rb(t_stack *a, t_stack *b, int min_index);
+void	do_rra_rrb(t_stack *a, t_stack *b, int min_index);
+void	do_ra_rrb(t_stack *a, t_stack *b, int min_index);
+void	do_rra_rb(t_stack *a, t_stack *b, int min_index);
+
+int		check_ra_rb(t_stack *a, t_stack *b, int index);
+int		check_rra_rrb(t_stack *a, t_stack *b, int index);
+int		check_ra_rrb(t_stack *a, t_stack *b, int index);
+int		check_rra_rb(t_stack *a, t_stack *b, int index);
+
+int		get_position_in_b(t_stack *b, int index);
+int		get_position(t_stack	*stack, int index);
+int		get_min_index(t_stack *stack);
+int		get_max_index(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 05:39:19 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/27 07:15:33 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/05 10:05:09 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	tiny_sort(t_stack *a)
 	int	s;
 	int	t;
 
+	if (size(a) == 2 && !is_sorted(a))
+		return(sa(&a));
 	f = a->top->data;
 	s = a->top->next->data;
 	t = a->bottom->data;
