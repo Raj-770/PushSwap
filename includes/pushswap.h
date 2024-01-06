@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:26:15 by rpambhar          #+#    #+#             */
-/*   Updated: 2024/01/05 09:57:45 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/06 08:17:33 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,8 @@ int		get_position_in_b(t_stack *b, int index);
 int		get_position(t_stack	*stack, int index);
 int		get_min_index(t_stack *stack);
 int		get_max_index(t_stack *stack);
+
+// Freeing stack
+void	free_stack(t_stack	*stack);
 
 #endif

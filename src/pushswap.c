@@ -6,11 +6,13 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 22:12:02 by rpambhar          #+#    #+#             */
-/*   Updated: 2024/01/05 10:04:25 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/06 08:17:40 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+
+// void	check_leaks(void);
 
 int	main(int argc, char **argv)
 {
@@ -30,5 +32,14 @@ int	main(int argc, char **argv)
 		else
 			middle_sort(&a, &b);
 	}
+	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }
+
+//atexit(check_leaks);
+
+// void	check_leaks(void)
+// {
+// 	system("leaks push_swap");
+// }
