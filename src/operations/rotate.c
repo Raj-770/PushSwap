@@ -6,13 +6,13 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:57:36 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/29 15:38:56 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/08 07:23:08 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 
-static void	rotate(t_stack *stack)
+void	rotate(t_stack *stack)
 {
 	t_list	*first;
 	t_list	*last;

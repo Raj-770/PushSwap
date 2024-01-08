@@ -16,7 +16,7 @@ FT_PRINTF		:=	$(FT_PRINTF_PATH)$(FT_PRINTF_NAME)
 
 # Includes
 INC	:=	-I ./lib/libft \
-		-I ./lib/ft_printf
+		-I ./lib/ft_printf \
 
 # Source
 SRCS	:=	src/pushswap.c \
@@ -37,6 +37,21 @@ SRCS	:=	src/pushswap.c \
 
 OBJS	:=	$(SRCS:.c=.o)
 
+# Bonus Source
+BNS_SRCS	:=	bonus/get_next_line/get_next_line.c \
+				bonus/get_next_line/get_next_line_utils.c \
+				bonus/checker.c \
+				bonus/checker_operations.c \
+				src/operations/basic_operations.c \
+				src/operations/swap.c \
+				src/operations/push.c \
+				src/operations/rotate.c \
+				src/operations/reverse_rotate.c \
+				src/parse_args.c \
+				src/utils.c
+
+BNS_OBJS	:=	$(BNS_SRCS:.c=.o)
+
 all: $(LIBFT) $(FT_PRINTF) $(NAME)
 
 # Making Libft
@@ -55,11 +70,18 @@ $(FT_PRINTF):
 # Compiling PushSwap
 $(NAME): $(OBJS)
 	@echo "Compiling PushSwap..."
-	@$(CC) $(OBJS) $(LIBFT) $(FT_PRINTF) $(INC) -g -o $(NAME)
+	@$(CC) $(OBJS) $(LIBFT) $(FT_PRINTF) $(INC) -o $(NAME)
+
+bonus: $(LIBFT) $(FT_PRINTF) checker
+
+checker: $(BNS_OBJS)
+	@echo "Compiling Checker..."
+	@$(CC) $(CFLAGS) $(BNS_OBJS) $(LIBFT) $(FT_PRINTF) -o $@
 
 clean:
 	@echo "Cleaning object files..."
 	@rm -rf $(OBJS)
+	@rm -rf $(BNS_OBJS)
 	@make clean -sC $(LIBFT_PATH)
 	@make clean -sC $(FT_PRINTF_PATH)
 
@@ -68,6 +90,7 @@ fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(LIBFT)
 	@rm -rf $(FT_PRINTF)
+	@rm -rf checker
 
 re: fclean all
 

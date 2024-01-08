@@ -6,13 +6,13 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 20:37:42 by rpambhar          #+#    #+#             */
-/*   Updated: 2023/12/26 21:56:35 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/08 07:23:02 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 
-static void	swap(t_stack *stack)
+void	swap(t_stack *stack)
 {
 	t_list	*first;
 	t_list	*second;

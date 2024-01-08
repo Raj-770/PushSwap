@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:42:36 by rpambhar          #+#    #+#             */
-/*   Updated: 2024/01/05 09:58:11 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/08 07:24:26 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include "../lib/ft_printf/ft_printf.h"
 # include "../lib/libft/libft.h"
+# include "../bonus/get_next_line/get_next_line.h"
 
 typedef struct s_list
 {
@@ -40,6 +41,7 @@ int		is_sorted(t_stack *a);
 void	set_index(t_stack *stack);
 
 // Swap
+void	swap(t_stack *stack);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
@@ -49,11 +51,13 @@ void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
 
 // Rotate
+void	rotate(t_stack *stack);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 
 // Reverse Rotate
+void	reverse_rotate(t_stack *stack);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);

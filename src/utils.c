@@ -6,7 +6,7 @@
 /*   By: rpambhar <rpambhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 05:42:52 by rpambhar          #+#    #+#             */
-/*   Updated: 2024/01/06 08:17:27 by rpambhar         ###   ########.fr       */
+/*   Updated: 2024/01/08 07:12:11 by rpambhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	has_duplicate(t_stack *stack, int num)
 	return (0);
 }
 
-void	free_stack(t_stack	*stack)
+int	free_stack(t_stack	*stack)
 {
 	t_list	*temp;
 
@@ -49,4 +49,5 @@ void	free_stack(t_stack	*stack)
 		stack->top = stack->top->next;
 		free(temp);
 	}
+	return (0);
 }
